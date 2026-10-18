@@ -4,29 +4,146 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>funkycherry</title>
-<meta name="description" content="funkycherry makes small, bright games for iPhone. Our first: Prismfall, a neon light-beam breaker.">
-<link rel="icon" href="prismfall/icon.png">
+<meta name="description" content="funkycherry is one person making small, bright games. The first one is Prismfall.">
+<meta name="theme-color" content="#0d0a0e">
+<link rel="icon" href="logo-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,400..900,0..100,0..1&family=Onest:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --night: #0d0a0e;
+  --line: #2a2026;
+  --text: #f1e8ec;
+  --dim: #95848d;
+  --cherry: #e5304b;
+  --cherry-deep: #9c1229;
+  --stem: #c9a46a;
+  --leaf: #5fa85a;
+}
+* { box-sizing: border-box; }
+html { background: var(--night); color-scheme: dark; }
+body { margin: 0; background: var(--night); color: var(--text); font: 17px/1.6 "Onest", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-underline-offset: 4px; text-decoration-thickness: 1px; }
+a:hover { color: var(--cherry); }
+:focus-visible { outline: 1.5px solid var(--cherry); outline-offset: 4px; border-radius: 4px; }
+.display { font-family: "Fraunces", serif; font-weight: 600; font-variation-settings: "SOFT" 100, "WONK" 1, "opsz" 144; letter-spacing: -0.03em; }
+.wrap { max-width: 880px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 48px); }
+
+/* header */
+.site { display: flex; align-items: center; justify-content: space-between; height: 80px; }
+.brand { display: flex; align-items: center; gap: 8px; text-decoration: none; font-size: 20px; }
+.brand svg { width: 22px; height: 22px; }
+.site nav { display: flex; gap: clamp(18px, 3vw, 32px); font-size: 15px; color: var(--dim); }
+.site nav a { text-decoration: none; padding: 8px 0; }
+
+/* hero */
+.hero { min-height: calc(100svh - 80px); display: grid; place-items: center; text-align: center; padding: 40px 0 96px; }
+.cherries { width: clamp(112px, 16vw, 152px); height: auto; overflow: visible; margin-bottom: 28px; }
+.cherries .sway { transform-origin: 60px 8px; animation: sway 5.5s ease-in-out infinite; }
+.cherries .bob-a { transform-origin: 60px 8px; animation: sway 4.6s ease-in-out infinite reverse; }
+@keyframes sway { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+h1 { font-size: clamp(56px, 10vw, 112px); line-height: 1; margin: 0 0 18px; }
+h1 em { font-style: normal; color: var(--cherry); }
+.lede { margin: 0; color: var(--dim); font-size: clamp(17px, 1.6vw, 19px); }
+.down { display: inline-block; margin-top: 40px; font-size: 15px; color: var(--dim); text-decoration: none; }
+
+/* games */
+.games { padding: 32px 0 96px; }
+.games h2 { font-size: 15px; font-weight: 500; color: var(--dim); letter-spacing: .12em; text-transform: uppercase; font-family: inherit; margin: 0 0 8px; }
+.game { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 24px; align-items: center; padding: 28px 0; border-top: 1px solid var(--line); }
+.game:last-child { border-bottom: 1px solid var(--line); }
+.game img { width: 88px; height: 88px; border-radius: 22%; display: block; }
+.game h3 { font-size: 32px; line-height: 1.1; margin: 0 0 4px; }
+.game p { margin: 0; color: var(--dim); max-width: 34em; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 10px; font-size: 15px; }
+.meta .status { color: var(--cherry); }
+.game.soon { opacity: .55; }
+.placeholder { width: 88px; height: 88px; border-radius: 22%; border: 1px dashed var(--line); display: grid; place-items: center; }
+.placeholder svg { width: 34px; height: 34px; opacity: .6; }
+
+footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; padding: 32px 0 56px; font-size: 15px; color: var(--dim); }
+
+@media (max-width: 520px) {
+  .site nav a:first-child { display: none; }
+  .game { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; }
+  .game img, .placeholder { width: 64px; height: 64px; }
+  .game h3 { font-size: 26px; }
+}
+@media (prefers-reduced-motion: reduce) { .cherries .sway, .cherries .bob-a { animation: none; } }
+</style>
 </head>
 <body>
-<main>
-<div class="wordmark">FUNKYCHERRY</div>
-<p class="tagline">Small, bright games for iPhone.</p>
+<!-- the cherry pair, drawn once and reused -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <radialGradient id="skin" cx="35%" cy="32%" r="75%">
+      <stop offset="0" stop-color="#ee4660"/>
+      <stop offset=".6" stop-color="#e5304b"/>
+      <stop offset="1" stop-color="#9c1229"/>
+    </radialGradient>
+    <symbol id="pair" viewBox="0 0 120 140">
+      <path d="M60 8 C 74 10, 86 6, 92 2 C 84 16, 70 18, 60 8 Z" fill="#5fa85a"/>
+      <path d="M60 8 C 52 40, 40 64, 36 92" fill="none" stroke="#c9a46a" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M60 8 C 66 44, 78 70, 84 100" fill="none" stroke="#c9a46a" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="36" cy="106" r="22" fill="url(#skin)"/>
+      <circle cx="84" cy="112" r="22" fill="url(#skin)"/>
+      <circle cx="28" cy="98" r="3.4" fill="#fff" opacity=".85"/>
+      <circle cx="76" cy="104" r="3.4" fill="#fff" opacity=".85"/>
+    </symbol>
+  </defs>
+</svg>
 
-<section class="game">
-<img src="prismfall/icon.png" alt="Prismfall app icon">
-<div>
-<h2>Prismfall</h2>
-<p>A neon light-beam breaker. Aim, bounce, break, and build a train of beams that tears the board apart.</p>
-<span class="badge">Coming soon to the App Store</span>
-<div class="links"><a href="prismfall/">Support</a><a href="prismfall/privacy.html">Privacy</a></div>
+<div class="wrap">
+  <header class="site">
+    <a class="brand display" href="#"><svg aria-hidden="true"><use href="#pair"/></svg>funkycherry</a>
+    <nav aria-label="Main"><a href="#games">Games</a><a href="prismfall/">Support</a><a href="mailto:support@funkycherry.games">Contact</a></nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <svg class="cherries" viewBox="0 0 120 140" role="img" aria-label="Two cherries on one stem">
+        <g class="sway">
+          <path d="M60 8 C 74 10, 86 6, 92 2 C 84 16, 70 18, 60 8 Z" fill="#5fa85a"/>
+          <g class="bob-a">
+            <path d="M60 8 C 52 40, 40 64, 36 92" fill="none" stroke="#c9a46a" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="36" cy="106" r="22" fill="url(#skin)"/>
+            <circle cx="28" cy="98" r="3.4" fill="#fff" opacity=".85"/>
+          </g>
+          <path d="M60 8 C 66 44, 78 70, 84 100" fill="none" stroke="#c9a46a" stroke-width="2.4" stroke-linecap="round"/>
+          <circle cx="84" cy="112" r="22" fill="url(#skin)"/>
+          <circle cx="76" cy="104" r="3.4" fill="#fff" opacity=".85"/>
+        </g>
+      </svg>
+      <h1 class="display">funky<em>cherry</em></h1>
+      <p class="lede">Small, bright games, made by one person.</p>
+      <a class="down" href="#games">Games ↓</a>
+    </div>
+  </section>
+
+  <main class="games" id="games">
+    <h2>Games</h2>
+    <article class="game">
+      <img src="prismfall/icon.png" alt="Prismfall app icon" width="88" height="88">
+      <div>
+        <h3 class="display">Prismfall</h3>
+        <p>A neon light-beam breaker. Aim, bounce, and build a train of beams that tears the board apart.</p>
+        <div class="meta"><span class="status">Coming soon to the App Store</span><a href="prismfall/">Support</a><a href="prismfall/privacy.html">Privacy</a></div>
+      </div>
+    </article>
+    <article class="game soon">
+      <div class="placeholder"><svg aria-hidden="true"><use href="#pair"/></svg></div>
+      <div>
+        <h3 class="display">Next game</h3>
+        <p>Something new is in the works.</p>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <span>Write to <a href="mailto:support@funkycherry.games">support@funkycherry.games</a></span>
+    <span>© 2026 funkycherry</span>
+  </footer>
 </div>
-</section>
-
-<footer class="dim">Contact: <a href="mailto:support@funkycherry.games">support@funkycherry.games</a><br>© 2026 Hlib Vyshnenko</footer>
-</main>
 </body>
 </html>
