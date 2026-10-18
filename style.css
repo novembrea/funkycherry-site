@@ -10,3 +10,16 @@ a { color: var(--accent); }
 ul { padding-left: 20px; }
 nav { margin-bottom: 32px; font-size: 15px; }
 nav a { margin-right: 16px; }
+
+/* Studio landing */
+.wordmark { font-family: "Michroma", sans-serif; font-size: 34px; letter-spacing: 0.18em; margin: 24px 0 8px; }
+.tagline { color: var(--dim); margin: 0 0 48px; }
+.game { display: flex; gap: 20px; align-items: center; background: #11131c; border: 1px solid #262a3d; border-radius: 20px; padding: 20px; }
+.game img { width: 96px; height: 96px; border-radius: 22px; flex: none; }
+.game h2 { margin: 0 0 4px; }
+.game p { margin: 0 0 10px; }
+.badge { display: inline-block; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bg); background: var(--accent); border-radius: 999px; padding: 4px 12px; }
+.links { font-size: 15px; margin-top: 10px; }
+.links a { margin-right: 14px; }
+footer { margin-top: 64px; }
+@media (max-width: 480px) { .game { flex-direction: column; align-items: flex-start; } .wordmark { font-size: 26px; } }
