@@ -58,16 +58,13 @@ h1 em { font-style: normal; color: var(--cherry); }
 .game p { margin: 0; color: var(--dim); max-width: 34em; }
 .meta { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 10px; font-size: 15px; }
 .meta .status { color: var(--cherry); }
-.game.soon { opacity: .55; }
-.placeholder { width: 88px; height: 88px; border-radius: 22%; border: 1px dashed var(--line); display: grid; place-items: center; }
-.placeholder svg { width: 34px; height: 34px; opacity: .6; }
 
 footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 32px; padding: 32px 0 56px; font-size: 15px; color: var(--dim); }
 
 @media (max-width: 520px) {
   .site nav a:first-child { display: none; }
   .game { grid-template-columns: 64px minmax(0, 1fr); gap: 16px; }
-  .game img, .placeholder { width: 64px; height: 64px; }
+  .game img { width: 64px; height: 64px; }
   .game h3 { font-size: 26px; }
 }
 @media (prefers-reduced-motion: reduce) { .cherries .sway, .cherries .bob-a { animation: none; } }
@@ -131,11 +128,20 @@ footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12
         <div class="meta"><a class="status" href="https://apps.apple.com/app/prismfall-neon-breaker/id6819413580">Get it on the App Store</a><a href="prismfall/">Support</a><a href="prismfall/privacy.html">Privacy</a></div>
       </div>
     </article>
-    <article class="game soon">
-      <div class="placeholder"><svg aria-hidden="true"><use href="#pair"/></svg></div>
+    <article class="game">
+      <img src="games/point-alpha.png" alt="Point Alpha: NATO and Warsaw Pact units on a hex map" width="88" height="88">
       <div>
-        <h3 class="display">Next game</h3>
-        <p>Something new is in the works.</p>
+        <h3 class="display">Point Alpha</h3>
+        <p>A Cold War tactical roguelite. It's 1985: hold the inner German border, then fall back to the Rhine, one turn-based battle at a time.</p>
+        <div class="meta"><span class="status">Coming soon to iPhone</span></div>
+      </div>
+    </article>
+    <article class="game">
+      <img src="games/grave-born.png" alt="Grave Born: a necromancer and an undead horde in a dungeon" width="88" height="88">
+      <div>
+        <h3 class="display">Grave Born</h3>
+        <p>A pixel-art roguelike where you never fight yourself. Raise the fallen, grow a rowdy undead horde, and march it against the forces of light.</p>
+        <div class="meta"><span class="status">In development</span></div>
       </div>
     </article>
   </main>
